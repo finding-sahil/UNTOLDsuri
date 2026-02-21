@@ -13,9 +13,9 @@
      ICON REGISTRY
   ══════════════════════════════════════════════════════════ */
   const ICONS = {
-    youtube: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10,9 16,12 10,15" fill="currentColor"/></svg>`,
-    instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>`,
-    facebook: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+    youtube: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1.1-1.1-1.9-2.2-2.2C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.3.5c-1.1.3-1.9 1.1-2.2 2.2C0 8.2 0 12 0 12s0 3.8.5 5.8c.3 1.1 1.1 1.9 2.2 2.2 2 1 9.3 1 9.3 1s7.3 0 9.3-1c1.1-.3 1.9-1.1 2.2-2.2.5-2 .5-5.8.5-5.8s0-3.8-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>`,
+    instagram: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.247 3.608-1.31 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.977 6.98 1.281.058 1.689.072 4.951.072s3.67-.014 4.951-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.977-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4.162 4.162 0 110-8.324 4.162 4.162 0 010 8.324zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>`,
+    facebook: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>`,
     person: `<svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="22" r="10" stroke="#555" stroke-width="1.5"/><path d="M10 55c0-11 9-18 20-18s20 7 20 18" stroke="#555" stroke-width="1.5"/></svg>`,
   };
 
@@ -188,6 +188,7 @@
   }
 
   function renderFooter() {
+    console.log("Rendering footer...");
     const brand = document.getElementById('footer-brand');
     const tagline = document.getElementById('footer-tagline');
     const nav = document.getElementById('footer-nav');
@@ -196,26 +197,28 @@
     const copy = document.getElementById('footer-copy');
     const dev = document.getElementById('footer-dev');
 
-    if (brand) brand.innerHTML = esc(S.brand.name).replace('suri', '<span>suri</span>');
-    if (tagline) tagline.textContent = S.brand.tagline;
+    if (brand) brand.innerHTML = esc(S.brand.name || 'UNTOLDsuri').replace('suri', '<span>suri</span>');
+    if (tagline) tagline.textContent = S.brand.tagline || '';
     if (nav) {
-      nav.innerHTML = S.nav.map(n => `<li><a href="${esc(n.href)}">${esc(n.label)}</a></li>`).join('');
+      nav.innerHTML = (S.nav || []).map(n => `<li><a href="${esc(n.href)}">${esc(n.label)}</a></li>`).join('');
     }
-    if (socials) {
+    if (socials && S.links) {
+      console.log("Populating socials column...");
       socials.innerHTML = `
         <div class="footer-social-icons">
-          <a href="${esc(S.links.youtube)}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
-          <a href="${esc(S.links.instagram)}" target="_blank" aria-label="Instagram">${ICONS.instagram}</a>
-          <a href="${esc(S.links.facebook)}" target="_blank" aria-label="Facebook">${ICONS.facebook}</a>
+          <a href="${esc(S.links.youtube || '#')}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
+          <a href="${esc(S.links.instagram || '#')}" target="_blank" aria-label="Instagram">${ICONS.instagram}</a>
+          <a href="${esc(S.links.facebook || '#')}" target="_blank" aria-label="Facebook">${ICONS.facebook}</a>
         </div>
-        <a href="mailto:${esc(S.links.email)}" class="footer-email-link">${esc(S.links.email)}</a>
+        <a href="mailto:${esc(S.links.email || '')}" class="footer-email-link">${esc(S.links.email || '')}</a>
       `;
     }
-    if (quote) quote.textContent = S.brand.footerQuote;
-    if (copy) copy.textContent = `© ${S.brand.copyright}`;
+    if (quote) quote.textContent = S.brand.footerQuote || '';
+    if (copy) copy.textContent = `© ${S.brand.copyright || ''}`;
     if (dev && S.brand.developer) {
       dev.innerHTML = `Created with ❤️ by <a href="${esc(S.brand.developer.link)}" target="_blank">${esc(S.brand.developer.name)}</a>`;
     }
+    console.log("Footer rendered.");
   }
 
   /* ══════════════════════════════════════════════════════════
