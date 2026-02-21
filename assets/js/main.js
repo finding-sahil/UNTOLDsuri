@@ -189,10 +189,25 @@
 
   function renderFooter() {
     const brand = document.getElementById('footer-brand');
+    const tagline = document.getElementById('footer-tagline');
+    const nav = document.getElementById('footer-nav');
+    const socials = document.getElementById('footer-socials');
     const quote = document.getElementById('footer-quote');
     const copy = document.getElementById('footer-copy');
     const dev = document.getElementById('footer-dev');
+
     if (brand) brand.innerHTML = esc(S.brand.name).replace('suri', '<span>suri</span>');
+    if (tagline) tagline.textContent = S.brand.tagline;
+    if (nav) {
+      nav.innerHTML = S.nav.map(n => `<li><a href="${esc(n.href)}">${esc(n.label)}</a></li>`).join('');
+    }
+    if (socials) {
+      socials.innerHTML = `
+        <a href="${esc(S.links.youtube)}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
+        <a href="${esc(S.links.instagram)}" target="_blank" aria-label="Instagram">${ICONS.instagram}</a>
+        <a href="${esc(S.links.facebook)}" target="_blank" aria-label="Facebook">${ICONS.facebook}</a>
+      `;
+    }
     if (quote) quote.textContent = S.brand.footerQuote;
     if (copy) copy.textContent = `© ${S.brand.copyright}`;
     if (dev && S.brand.developer) {
