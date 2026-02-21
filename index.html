@@ -24,9 +24,28 @@
 
 <body>
 
+  <!-- Preloader -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-logo">UNTOLD<span>suri</span></div>
+      <div class="loader-bar"></div>
+      <p>Accessing Archive...</p>
+    </div>
+  </div>
+
+  <!-- Noise Layers -->
+  <div class="film-grain"></div>
+  <div class="scanlines"></div>
+
   <!-- Cursor tracer -->
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll Progress & Back to Top -->
+  <div id="scroll-progress"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 
   <!-- ═══════════════════════════════════════ NAV ═══ -->
   <nav id="site-nav" class="site-nav" aria-label="Primary navigation"></nav>
@@ -71,6 +90,16 @@
       </div>
     </section>
 
+    <!-- ════════════════════════════════ GALLERY ═══ -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <span class="section-label">Visual Archive</span>
+        <h2 class="section-title">Historical Gallery</h2>
+        <p class="section-intro">Fragmentary glimpses into the past of Barak Valley.</p>
+        <div id="gallery-scroller" class="gallery-scroller"></div>
+      </div>
+    </section>
+
     <!-- ══════════════════════════════ RESEARCH ═══ -->
     <section class="section section-alt" id="research">
       <div class="bubble-bg" aria-hidden="true"></div>
@@ -95,13 +124,44 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════ MAP ═══ -->
+    <section class="section" id="map">
+      <div class="container map-container">
+        <span class="section-label">Mapping Progress</span>
+        <h2 id="map-title" class="section-title"></h2>
+        <p id="map-desc" class="section-intro"></p>
+        <div class="map-wrapper glass-card">
+          <div id="map-canvas" class="map-canvas">
+            <!-- Pins will be injected here -->
+          </div>
+          <div class="map-overlay"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════ TEAM ═══ -->
-    <section class="section" id="team">
+    <section class="section section-alt" id="team">
+      <div class="bubble-bg" aria-hidden="true"></div>
       <div class="container">
         <span class="section-label">The Team</span>
         <h2 class="section-title">Who We Are</h2>
         <p class="section-intro">A small group of researchers and storytellers working out of Barak Valley.</p>
         <div id="team-grid" class="team-grid"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════ NEWSLETTER ═══ -->
+    <section class="section" id="newsletter">
+      <div class="container">
+        <div class="newsletter-glass glass-card">
+          <h2 id="news-title" class="section-title"></h2>
+          <p id="news-desc" class="section-intro"></p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input type="email" id="news-email" required placeholder="">
+            <button type="submit" class="btn-red">Join Archive</button>
+          </form>
+          <div id="news-status" class="news-status"></div>
+        </div>
       </div>
     </section>
 

@@ -25,10 +25,12 @@ window.SITE = {
     /* ─────────────────────────── NAV LINKS ─────────────────── */
     nav: [
         { label: 'About', href: '#about' },
-        { label: 'Platforms', href: '#platforms' },
         { label: 'Works', href: '#works' },
-        { label: 'Research', href: '#research' },
+        { label: 'Gallery', href: '#gallery' },
+        { label: 'Archive', href: '#research' },
+        { label: 'Map', href: '#map' },
         { label: 'Team', href: '#team' },
+        { label: 'Join', href: '#newsletter' },
         { label: 'Contact', href: '#contact' },
     ],
 
@@ -168,6 +170,51 @@ window.SITE = {
             photo: '',
         },
     ],
+
+    /* ─────────────────────────── ARCHIVAL GALLERY ─────────── */
+    gallery: [
+        {
+            title: 'Silchar Ghat, 1920s',
+            desc: 'Archival record of river trade and commerce along the Barak.',
+            img: 'assets/img/gallery-1.jpg'
+        },
+        {
+            title: 'Tea Estate Bungalow',
+            desc: 'Colonial-era architecture in the lush hills of Cachar.',
+            img: 'assets/img/gallery-2.jpg'
+        },
+        {
+            title: 'Old Badarpur Bridge',
+            desc: 'A critical transport link dating back to the late 19th century.',
+            img: 'assets/img/gallery-3.jpg'
+        },
+        {
+            title: 'Royal Gate, Khaspur',
+            desc: 'Remaining structure of the Dimasa Kachari Kingdom capital.',
+            img: 'assets/img/gallery-4.jpg'
+        }
+    ],
+
+    /* ─────────────────────────── RESEARCH MAP ───────────────── */
+    map: {
+        title: 'Geographic Documentation',
+        desc: 'Key locations in Barak Valley currently under archival research.',
+        pins: [
+            { name: 'Khaspur', x: '45%', y: '30%', status: 'Documented' },
+            { name: 'Badarpur', x: '25%', y: '50%', status: 'Researching' },
+            { name: 'Silchar', x: '55%', y: '55%', status: 'Documented' },
+            { name: 'Karimganj', x: '15%', y: '65%', status: 'Planned' },
+            { name: 'Hailakandi', x: '40%', y: '75%', status: 'Researching' }
+        ]
+    },
+
+    /* ─────────────────────────── NEWSLETTER ────────────────── */
+    newsletter: {
+        title: 'Join the Archive',
+        desc: 'Receive updates on new research findings, documentary releases, and historical insights.',
+        placeholder: 'Enter your email address'
+    },
+
 
     /* ─────────────────────────── CONTACT SECTION ───────────── */
     contact: {
