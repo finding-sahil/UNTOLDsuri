@@ -186,12 +186,12 @@ window.SITE = {
         {
             title: 'Old Badarpur Bridge',
             desc: 'A critical transport link dating back to the late 19th century.',
-            img: 'assets/img/gallery-3.jpg'
+            img: 'assets/img/work-3.jpg'
         },
         {
             title: 'Royal Gate, Khaspur',
             desc: 'Remaining structure of the Dimasa Kachari Kingdom capital.',
-            img: 'assets/img/gallery-4.jpg'
+            img: 'assets/img/work-1.jpg'
         }
     ],
 

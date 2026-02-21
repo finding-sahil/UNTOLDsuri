@@ -84,14 +84,38 @@
   function renderGallery() {
     const scroller = document.getElementById('gallery-scroller');
     if (!scroller) return;
-    scroller.innerHTML = S.gallery.map(g => `
-      <div class="gallery-card reveal">
+    scroller.innerHTML = S.gallery.map((g, i) => {
+      const rot = (Math.random() * 6 - 3).toFixed(1); // Random rotation -3 to 3deg
+      return `
+      <div class="gallery-card reveal" style="--rot: ${rot}deg" data-index="${i}">
         <img src="${esc(g.img)}" alt="${esc(g.title)}" class="gallery-img" loading="lazy"/>
         <div class="gallery-info">
           <h3>${esc(g.title)}</h3>
-          <p>${esc(g.desc)}</p>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+
+    scroller.addEventListener('click', e => {
+      const card = e.target.closest('.gallery-card');
+      if (!card) return;
+      const idx = card.dataset.index;
+      const item = S.gallery[idx];
+
+      lbImg.src = item.img;
+      lbCap.innerHTML = `<h3>${esc(item.title)}</h3><p>${esc(item.desc)}</p>`;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Lock scroll
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
   }
 
   function renderResearch() {
