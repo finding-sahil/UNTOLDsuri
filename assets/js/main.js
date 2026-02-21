@@ -203,9 +203,12 @@
     }
     if (socials) {
       socials.innerHTML = `
-        <a href="${esc(S.links.youtube)}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
-        <a href="${esc(S.links.instagram)}" target="_blank" aria-label="Instagram">${ICONS.instagram}</a>
-        <a href="${esc(S.links.facebook)}" target="_blank" aria-label="Facebook">${ICONS.facebook}</a>
+        <div class="footer-social-icons">
+          <a href="${esc(S.links.youtube)}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
+          <a href="${esc(S.links.instagram)}" target="_blank" aria-label="Instagram">${ICONS.instagram}</a>
+          <a href="${esc(S.links.facebook)}" target="_blank" aria-label="Facebook">${ICONS.facebook}</a>
+        </div>
+        <a href="mailto:${esc(S.links.email)}" class="footer-email-link">${esc(S.links.email)}</a>
       `;
     }
     if (quote) quote.textContent = S.brand.footerQuote;
