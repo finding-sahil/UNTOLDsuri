@@ -38,7 +38,8 @@
   --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --max-w: 1100px;
-  --section-pad: 8rem 1.5rem;
+  --section-pad: 5rem 1.5rem;
+  /* Reduced from 8rem */
   --radius-card: 20px;
   --radius-pill: 999px;
 }
@@ -374,6 +375,8 @@ body.cursor-hover #cursor-dot {
 .section {
   padding: var(--section-pad);
   position: relative;
+  overflow: hidden;
+  /* Prevent parallax overflow */
 }
 
 .section>.container {
@@ -1151,8 +1154,9 @@ body.cursor-hover #cursor-dot {
   background: rgba(0, 0, 0, 0.95);
   border-top: 1px solid var(--glass-border);
   backdrop-filter: blur(20px);
-  padding: 5rem 1.5rem 3.5rem;
-  margin-top: 5rem;
+  padding: 5rem 1.5rem 3rem;
+  margin-top: 0;
+  /* Removed large margin */
 }
 
 .footer-grid {
