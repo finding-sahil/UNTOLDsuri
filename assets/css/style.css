@@ -995,6 +995,24 @@ body.cursor-hover #cursor-dot {
   text-transform: uppercase;
 }
 
+.footer-dev {
+  font-size: 0.72rem;
+  color: var(--g5);
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+.footer-dev a {
+  color: var(--red);
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.footer-dev a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
 /* ═══════════════════════════════════════ RESPONSIVE ════ */
 @media (max-width: 768px) {
   :root {

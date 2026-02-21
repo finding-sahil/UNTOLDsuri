@@ -16,6 +16,10 @@ window.SITE = {
         subtext: 'Independent documentary storytelling through research, visuals, and truth.',
         footerQuote: '"History fades when it is not recorded."',
         copyright: '2026 UNTOLDsuri. All rights reserved.',
+        developer: {
+            name: 'SAHIL',
+            link: 'https://www.instagram.com/finding.sahil'
+        }
     },
 
     /* ─────────────────────────── NAV LINKS ─────────────────── */

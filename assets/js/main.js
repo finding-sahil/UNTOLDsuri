@@ -203,9 +203,13 @@
     const brand = document.getElementById('footer-brand');
     const quote = document.getElementById('footer-quote');
     const copy = document.getElementById('footer-copy');
+    const dev = document.getElementById('footer-dev');
     if (brand) brand.innerHTML = esc(S.brand.name).replace('suri', '<span>suri</span>');
     if (quote) quote.textContent = S.brand.footerQuote;
     if (copy) copy.textContent = `© ${S.brand.copyright}`;
+    if (dev && S.brand.developer) {
+      dev.innerHTML = `Created with ❤️ by <a href="${esc(S.brand.developer.link)}" target="_blank" rel="noopener noreferrer">${esc(S.brand.developer.name)}</a>`;
+    }
   }
 
   /* ══════════════════════════════════════════════════════════
