@@ -381,11 +381,13 @@
       setTimeout(deferred, 32); // Buffer for 2 frames
     }
 
-    // Phase 3: Pre-emptive Loader Removal
+    // Phase 3: Pre-emptive Loader Removal (with cinematic delay)
     const loader = document.getElementById('loader');
     if (loader) {
-      loader.style.opacity = '0';
-      setTimeout(() => loader.style.display = 'none', 600);
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 600);
+      }, 2000); // Cinematic delay for 2 seconds
     }
 
     // Safety fallback for window.load (older browsers or slow assets)
