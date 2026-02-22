@@ -265,8 +265,9 @@
     }
     if (quote) quote.textContent = S.brand.footerQuote || '';
     if (copy) copy.textContent = `© ${S.brand.copyright || ''}`;
-    if (dev && S.brand.developer) {
-      dev.innerHTML = `Created with ❤️ by <a href="${esc(S.brand.developer.link)}" target="_blank">${esc(S.brand.developer.name)}</a>`;
+    if (dev && S.brand.credits) {
+      const creditsHtml = S.brand.credits.map(c => `<a href="${esc(c.link)}" target="_blank">${esc(c.name)}</a>`).join(' & ');
+      dev.innerHTML = `Created with ❤️ by ${creditsHtml}`;
     }
   }
 
