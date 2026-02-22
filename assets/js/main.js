@@ -401,22 +401,16 @@
       setTimeout(deferred, 32); // Buffer for 2 frames
     }
 
-    // Phase 3: Pre-emptive Loader Removal (with cinematic delay)
+    // Unified Cinematic Loader Removal
     const loader = document.getElementById('loader');
     if (loader) {
       setTimeout(() => {
         loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 600);
-      }, 2000); // Cinematic delay for 2 seconds
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 800);
+      }, 3500); // 3.5 second cinematic delay
     }
-
-    // Safety fallback for window.load (older browsers or slow assets)
-    window.addEventListener('load', () => {
-      if (loader && loader.style.display !== 'none') {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 600);
-      }
-    });
   }
 
   boot();
