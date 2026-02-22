@@ -197,14 +197,31 @@
 
     const form = document.getElementById('newsletter-form');
     if (form) {
-      form.addEventListener('submit', e => {
+      form.addEventListener('submit', async e => {
         e.preventDefault();
         const status = document.getElementById('news-status');
+        const data = new FormData(form);
+
         status.textContent = 'Verifying with the archive...';
-        setTimeout(() => {
-          status.textContent = 'Welcome to the inner circle of UNTOLDsuri.';
-          form.reset();
-        }, 1500);
+        status.style.opacity = '1';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = 'Welcome to the inner circle of UNTOLDsuri.';
+            form.reset();
+          } else {
+            const result = await response.json();
+            status.textContent = result.errors ? result.errors.map(err => err.message).join(", ") : 'The archival link failed. Please try again.';
+          }
+        } catch (error) {
+          status.textContent = 'Connection to the archive lost. Please check your network.';
+        }
       });
     }
   }
