@@ -39,7 +39,7 @@
     const hero = document.getElementById('hero-inner');
     if (!hero) return;
     hero.innerHTML = `
-      <img src="${esc(S.brand.logo)}" alt="logo" class="hero-logo reveal"/>
+      <img src="${esc(S.brand.logo)}" alt="logo" class="hero-logo reveal" width="120" height="120" fetchpriority="high" />
       <h1 class="hero-title reveal">${esc(S.brand.name).replace('suri', '<span>suri</span>')}</h1>
       <div class="red-rule reveal"></div>
       <p class="hero-tagline reveal">${esc(S.brand.tagline)}</p>
@@ -90,7 +90,7 @@
       const rot = (Math.random() * 6 - 3).toFixed(1);
       return `
       <div class="gallery-card reveal" style="--rot: ${rot}deg" data-index="${i}">
-        <img src="${esc(g.img)}" alt="${esc(g.title)}" class="gallery-img" loading="lazy"/>
+        <img src="${esc(g.img)}" alt="${esc(g.title)}" class="gallery-img" loading="lazy" width="300" height="300" />
         <div class="gallery-info">
           <h3>${esc(g.title)}</h3>
         </div>
@@ -178,7 +178,7 @@
     if (!grid) return;
     grid.innerHTML = S.team.map(m => `
       <div class="team-card reveal">
-        <div class="team-avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="photo"/>` : ICONS.person}</div>
+        <div class="team-avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="photo" width="64" height="64" loading="lazy" />` : ICONS.person}</div>
         <div class="team-info">
           <strong class="team-name">${esc(m.name)}</strong>
           <span class="team-role">${esc(m.role)}</span>
@@ -281,7 +281,7 @@
       const progress = (scrollY / height) * 100;
 
       if (progressBar) progressBar.style.width = progress + '%';
-      
+
       if (backToTop) {
         if (scrollY > 600) backToTop.classList.add('visible');
         else backToTop.classList.remove('visible');

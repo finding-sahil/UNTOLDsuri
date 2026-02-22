@@ -8,6 +8,14 @@
     content="UNTOLDsuri – Documenting Barak Valley's forgotten history through independent research, visuals, and truth." />
   <title>UNTOLDsuri – Barak Valley's Forgotten History</title>
 
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="Logo/logo.jpg" as="image" fetchpriority="high" />
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap"
+    as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://untold-suri.vercel.app/" />
@@ -24,18 +32,21 @@
     content="Documenting the lost histories of Barak Valley through primary research and cinematic documentary storytelling." />
   <meta property="twitter:image" content="https://untold-suri.vercel.app/assets/img/og-image.jpg" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts: Non-render-blocking -->
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet" />
+  </noscript>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=1.0.2" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1.0.3" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="Logo/logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="Logo/logo.jpg" sizes="192x192" />
 </head>
 
 <body>
@@ -247,7 +258,7 @@
   <!-- Config (edit this to change all site content) -->
   <script src="assets/js/config.js"></script>
   <!-- Renderer + cursor logic -->
-  <script src="assets/js/main.js?v=1.0.2"></script>
+  <script src="assets/js/main.js?v=1.0.3"></script>
 
 </body>
 
