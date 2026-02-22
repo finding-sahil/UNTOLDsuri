@@ -81,11 +81,13 @@
       </article>`).join('');
   }
 
+  let currentLightboxIndex = 0;
+
   function renderGallery() {
     const scroller = document.getElementById('gallery-scroller');
     if (!scroller) return;
     scroller.innerHTML = S.gallery.map((g, i) => {
-      const rot = (Math.random() * 6 - 3).toFixed(1); // Random rotation -3 to 3deg
+      const rot = (Math.random() * 6 - 3).toFixed(1);
       return `
       <div class="gallery-card reveal" style="--rot: ${rot}deg" data-index="${i}">
         <img src="${esc(g.img)}" alt="${esc(g.title)}" class="gallery-img" loading="lazy"/>
@@ -99,20 +101,50 @@
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
     const lbCap = document.getElementById('lightbox-caption');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+
+    const updateLightbox = (idx) => {
+      currentLightboxIndex = parseInt(idx);
+      const item = S.gallery[currentLightboxIndex];
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src = item.img;
+        lbImg.alt = item.title;
+        lbCap.innerHTML = `<h3>${esc(item.title)}</h3><p>${esc(item.desc)}</p>`;
+        lbImg.style.opacity = '1';
+      }, 200);
+    };
 
     scroller.addEventListener('click', e => {
       const card = e.target.closest('.gallery-card');
       if (!card) return;
-      const idx = card.dataset.index;
-      const item = S.gallery[idx];
-
-      lbImg.src = item.img;
-      lbCap.innerHTML = `<h3>${esc(item.title)}</h3><p>${esc(item.desc)}</p>`;
+      updateLightbox(card.dataset.index);
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Lock scroll
+      document.body.style.overflow = 'hidden';
     });
 
-    lightbox.addEventListener('click', () => {
+    prevBtn?.addEventListener('click', e => {
+      e.stopPropagation();
+      let newIdx = currentLightboxIndex - 1;
+      if (newIdx < 0) newIdx = S.gallery.length - 1;
+      updateLightbox(newIdx);
+    });
+
+    nextBtn?.addEventListener('click', e => {
+      e.stopPropagation();
+      let newIdx = (currentLightboxIndex + 1) % S.gallery.length;
+      updateLightbox(newIdx);
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (!e.target.closest('.lightbox-content') && !e.target.closest('.lightbox-btn')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    lightbox.querySelector('.lightbox-close')?.addEventListener('click', () => {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
     });
@@ -188,7 +220,6 @@
   }
 
   function renderFooter() {
-    console.log("Rendering footer...");
     const brand = document.getElementById('footer-brand');
     const tagline = document.getElementById('footer-tagline');
     const nav = document.getElementById('footer-nav');
@@ -203,7 +234,6 @@
       nav.innerHTML = (S.nav || []).map(n => `<li><a href="${esc(n.href)}">${esc(n.label)}</a></li>`).join('');
     }
     if (socials && S.links) {
-      console.log("Populating socials column...");
       socials.innerHTML = `
         <div class="footer-social-icons">
           <a href="${esc(S.links.youtube || '#')}" target="_blank" aria-label="YouTube">${ICONS.youtube}</a>
@@ -218,7 +248,6 @@
     if (dev && S.brand.developer) {
       dev.innerHTML = `Created with ❤️ by <a href="${esc(S.brand.developer.link)}" target="_blank">${esc(S.brand.developer.name)}</a>`;
     }
-    console.log("Footer rendered.");
   }
 
   /* ══════════════════════════════════════════════════════════
@@ -243,41 +272,45 @@
     const sections = document.querySelectorAll('section, header');
     const bubbles = document.querySelectorAll('.hero-bubbles span, .bubble-bg');
 
-    window.addEventListener('scroll', () => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function update() {
       const scrollY = window.scrollY;
       const height = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollY / height) * 100;
 
-      // Progress bar
       if (progressBar) progressBar.style.width = progress + '%';
-
-      // Back to top
+      
       if (backToTop) {
         if (scrollY > 600) backToTop.classList.add('visible');
         else backToTop.classList.remove('visible');
       }
 
-      // Parallax Orbs
       bubbles.forEach((b, i) => {
-        const speed = (i + 1) * 0.1;
-        b.style.transform = `translateY(${scrollY * speed}px)`;
+        const speed = (i + 1) * 0.08;
+        b.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
       });
 
-      // Smart Nav
+      // Smart Nav logic
       let current = "";
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 100) {
-          current = section.getAttribute("id");
-        }
+        if (scrollY >= sectionTop - 120) current = section.getAttribute("id");
       });
       navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
-          link.classList.add("active");
-        }
+        link.classList.toggle("active", link.getAttribute("href").includes(current));
       });
-    });
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
 
     if (backToTop) {
       backToTop.addEventListener('click', () => {
@@ -293,18 +326,18 @@
     let mx = 0, my = 0, dx = 0, dy = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
     function tick() {
-      dx += (mx - dx) * 1; dy += (my - dy) * 1;
-      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
-      dot.style.transform = `translate(${dx - 4}px, ${dy - 4}px)`;
-      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+      dx += (mx - dx) * 0.35; dy += (my - dy) * 0.35;
+      rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+      dot.style.transform = `translate3d(${dx - 4}px, ${dy - 4}px, 0)`;
+      ring.style.transform = `translate3d(${rx - 18}px, ${ry - 18}px, 0)`;
       requestAnimationFrame(tick);
     }
-    tick();
+    requestAnimationFrame(tick);
     document.addEventListener('mouseover', e => {
-      if (e.target.closest('a, button, .work-card, .platform-card')) document.body.classList.add('cursor-hover');
+      if (e.target.closest('a, button, .work-card, .platform-card, .gallery-card, .map-pin')) document.body.classList.add('cursor-hover');
     });
     document.addEventListener('mouseout', e => {
-      if (e.target.closest('a, button, .work-card, .platform-card')) document.body.classList.remove('cursor-hover');
+      if (e.target.closest('a, button, .work-card, .platform-card, .gallery-card, .map-pin')) document.body.classList.remove('cursor-hover');
     });
   }
 
@@ -313,12 +346,8 @@
     if (!nav) return;
     nav.addEventListener('click', e => {
       const toggle = e.target.closest('.nav-toggle');
-      if (toggle) {
-        nav.querySelector('.nav-links').classList.toggle('open');
-      }
-      if (e.target.closest('.nav-links a')) {
-        nav.querySelector('.nav-links').classList.remove('open');
-      }
+      if (toggle) nav.querySelector('.nav-links').classList.toggle('open');
+      if (e.target.closest('.nav-links a')) nav.querySelector('.nav-links').classList.remove('open');
     });
   }
 
@@ -328,7 +357,6 @@
     renderContact(); renderFooter();
     initNav(); initCursor(); initReveal(); initScroll();
 
-    // Loader fadeout
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
       setTimeout(() => {
@@ -339,5 +367,4 @@
   }
 
   boot();
-
 })();

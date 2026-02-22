@@ -8,6 +8,22 @@
     content="UNTOLDsuri – Documenting Barak Valley's forgotten history through independent research, visuals, and truth." />
   <title>UNTOLDsuri – Barak Valley's Forgotten History</title>
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://untold-suri.vercel.app/" />
+  <meta property="og:title" content="UNTOLDsuri – Barak Valley's Forgotten History" />
+  <meta property="og:description"
+    content="Documenting the lost histories of Barak Valley through primary research and cinematic documentary storytelling." />
+  <meta property="og:image" content="https://untold-suri.vercel.app/assets/img/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://untold-suri.vercel.app/" />
+  <meta property="twitter:title" content="UNTOLDsuri – Barak Valley's Forgotten History" />
+  <meta property="twitter:description"
+    content="Documenting the lost histories of Barak Valley through primary research and cinematic documentary storytelling." />
+  <meta property="twitter:image" content="https://untold-suri.vercel.app/assets/img/og-image.jpg" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +32,7 @@
     rel="stylesheet" />
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1.0.2" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="Logo/logo.jpg" />
@@ -189,10 +205,12 @@
   </main>
 
   <!-- Fullscreen Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <button class="lightbox-close" aria-label="Close">✕</button>
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery viewer">
+    <button class="lightbox-close" aria-label="Close viewer">✕</button>
+    <button class="lightbox-prev lightbox-btn" aria-label="Previous image">❮</button>
+    <button class="lightbox-next lightbox-btn" aria-label="Next image">❯</button>
     <div class="lightbox-content">
-      <img src="" alt="" id="lightbox-img">
+      <img src="" alt="Archival photograph" id="lightbox-img">
       <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
   </div>
@@ -229,7 +247,7 @@
   <!-- Config (edit this to change all site content) -->
   <script src="assets/js/config.js"></script>
   <!-- Renderer + cursor logic -->
-  <script src="assets/js/main.js?v=1.0.1"></script>
+  <script src="assets/js/main.js?v=1.0.2"></script>
 
 </body>
 
