@@ -150,16 +150,16 @@ window.SITE = {
      */
     team: [
         {
-            name: '— Update Name —',
-            role: 'Historian & Director',
-            bio: 'Leads primary research and historical narration. Archives primary sources from the Barak Valley region.',
-            photo: '',
+            name: '— Sushmita Sarkar —',
+            role: 'Founder & Director',
+            bio: '',
+            photo: 'assets/img/Sushmita.jpeg',
         },
         {
-            name: '— Update Name —',
-            role: 'Field Researcher',
-            bio: 'Conducts field interviews, location surveys, and cross-references oral accounts with documented records.',
-            photo: '',
+            name: '— Tushar Sarkar —',
+            role: 'Founder & Director',
+            bio: '',
+            photo: 'assets/img/Tushar.jpeg',
         },
         {
             name: '— Update Name —',
