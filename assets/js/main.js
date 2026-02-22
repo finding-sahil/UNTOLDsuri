@@ -39,7 +39,7 @@
     const hero = document.getElementById('hero-inner');
     if (!hero) return;
     hero.innerHTML = `
-      <img src="${esc(S.brand.logo)}" alt="logo" class="hero-logo reveal" width="120" height="120" fetchpriority="high" />
+      <img src="${esc(S.brand.logo)}" alt="UNTOLDsuri: Barak Valley History Archive Logo" class="hero-logo reveal" width="120" height="120" fetchpriority="high" />
       <h1 class="hero-title reveal">${esc(S.brand.name).replace('suri', '<span>suri</span>')}</h1>
       <div class="red-rule reveal"></div>
       <p class="hero-tagline reveal">${esc(S.brand.tagline)}</p>
@@ -70,7 +70,7 @@
     grid.innerHTML = S.works.map(w => `
       <article class="work-card reveal">
         <a href="${esc(w.url)}" target="_blank" class="work-thumbnail-link">
-          <img src="${esc(w.thumbnail)}" alt="${esc(w.title)}" class="work-thumbnail" loading="lazy"/>
+          <img src="${esc(w.thumbnail)}" alt="${esc(w.alt || w.title)}" class="work-thumbnail" loading="lazy"/>
           <div class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.8"/><polygon points="10,8 16,12 10,16" fill="white"/></svg></div>
         </a>
         <div class="work-meta">
@@ -90,7 +90,7 @@
       const rot = (Math.random() * 6 - 3).toFixed(1);
       return `
       <div class="gallery-card reveal" style="--rot: ${rot}deg" data-index="${i}">
-        <img src="${esc(g.img)}" alt="${esc(g.title)}" class="gallery-img" loading="lazy" width="300" height="300" />
+        <img src="${esc(g.img)}" alt="${esc(g.alt || g.title)}" class="gallery-img" loading="lazy" width="300" height="300" />
         <div class="gallery-info">
           <h3>${esc(g.title)}</h3>
         </div>
@@ -324,7 +324,15 @@
     const ring = document.getElementById('cursor-ring');
     if (!dot || !ring) return;
     let mx = 0, my = 0, dx = 0, dy = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (dot.style.opacity !== '1') {
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+    });
+    document.body.classList.add('has-custom-cursor');
     function tick() {
       dx += (mx - dx) * 0.35; dy += (my - dy) * 0.35;
       rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
@@ -373,13 +381,18 @@
       setTimeout(deferred, 32); // Buffer for 2 frames
     }
 
+    // Phase 3: Pre-emptive Loader Removal
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 600);
+    }
+
+    // Safety fallback for window.load (older browsers or slow assets)
     window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      if (loader) {
-        setTimeout(() => {
-          loader.style.opacity = '0';
-          setTimeout(() => loader.style.display = 'none', 800);
-        }, 500);
+      if (loader && loader.style.display !== 'none') {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 600);
       }
     });
   }

@@ -86,6 +86,7 @@ window.SITE = {
             badge: 'Instagram',
             url: 'https://www.instagram.com/reel/DUu-W_Okf9D/',
             thumbnail: 'assets/img/work-1.jpg',
+            alt: 'Recent UNTOLDsuri Instagram reel documentary about Barak Valley'
         },
         {
             title: 'Barak Valley Chronicles',
@@ -94,6 +95,7 @@ window.SITE = {
             badge: 'Instagram',
             url: 'https://www.instagram.com/reel/DSpCX__kTBX/',
             thumbnail: 'assets/img/work-2.jpg',
+            alt: 'Documentary reel showing forgotten settlements along the Barak River'
         },
         {
             title: 'Historical Documentation',
@@ -102,6 +104,7 @@ window.SITE = {
             badge: 'Instagram',
             url: 'https://www.instagram.com/reel/DSe86ffkaC_/',
             thumbnail: 'assets/img/work-3.jpg',
+            alt: 'Archive footage and field research from Cachar district historical archive'
         },
         {
             title: 'Archive Reel',
@@ -110,6 +113,7 @@ window.SITE = {
             badge: 'Instagram',
             url: 'https://www.instagram.com/reel/DSXUnZekcKv/',
             thumbnail: 'assets/img/work-1.jpg',
+            alt: 'Archival documentation of historical structures in Barak Valley'
         }
     ],
 
@@ -176,22 +180,26 @@ window.SITE = {
         {
             title: 'Silchar Ghat, 1920s',
             desc: 'Archival record of river trade and commerce along the Barak.',
-            img: 'assets/img/gallery-1.jpg'
+            img: 'assets/img/gallery-1.jpg',
+            alt: 'Historical photo of Silchar Ghat in the 1920s showing river trade'
         },
         {
             title: 'Tea Estate Bungalow',
             desc: 'Colonial-era architecture in the lush hills of Cachar.',
-            img: 'assets/img/gallery-2.jpg'
+            img: 'assets/img/gallery-2.jpg',
+            alt: 'Colonial-era architecture of a tea estate bungalow in Cachar'
         },
         {
             title: 'Old Badarpur Bridge',
             desc: 'A critical transport link dating back to the late 19th century.',
-            img: 'assets/img/work-3.jpg'
+            img: 'assets/img/work-3.jpg',
+            alt: 'Historical view of the old Badarpur Bridge transport link'
         },
         {
             title: 'Royal Gate, Khaspur',
             desc: 'Remaining structure of the Dimasa Kachari Kingdom capital.',
-            img: 'assets/img/work-1.jpg'
+            img: 'assets/img/work-1.jpg',
+            alt: 'Archival image of the Royal Gate at Khaspur, Dimasa Kachari Kingdom'
         }
     ],
 
