@@ -352,17 +352,35 @@
   }
 
   function boot() {
-    renderNav(); renderHero(); renderAbout(); renderPlatforms(); renderWorks();
-    renderGallery(); renderResearch(); renderMap(); renderTeam(); renderNewsletter();
-    renderContact(); renderFooter();
-    initNav(); initCursor(); initReveal(); initScroll();
+    // Phase 1: Critical UI (Above the fold)
+    renderNav();
+    renderHero();
+    initNav();
+    initCursor();
+
+    // Phase 2: Deferred UI (Below the fold)
+    const deferred = () => {
+      renderAbout(); renderPlatforms(); renderWorks();
+      renderGallery(); renderResearch(); renderMap(); renderTeam(); renderNewsletter();
+      renderContact(); renderFooter();
+      initReveal();
+      initScroll();
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(deferred);
+    } else {
+      setTimeout(deferred, 32); // Buffer for 2 frames
+    }
 
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
-      setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 800);
-      }, 500);
+      if (loader) {
+        setTimeout(() => {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 800);
+        }, 500);
+      }
     });
   }
 
