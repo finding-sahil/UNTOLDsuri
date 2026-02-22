@@ -290,7 +290,7 @@ select {
   background: var(--red);
   box-shadow: 0 0 10px var(--red), 0 0 20px rgba(200, 16, 46, 0.5);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 200000;
   /* Only animate size changes, NOT position */
   transition: width 0.2s, height 0.2s, opacity 0.3s;
   will-change: transform;
@@ -310,7 +310,7 @@ select {
   border: 1px solid rgba(200, 16, 46, 0.4);
   box-shadow: 0 0 14px rgba(200, 16, 46, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.03);
   pointer-events: none;
-  z-index: 9998;
+  z-index: 199999;
   /* Only animate size/color, NOT position */
   transition: width 0.25s ease, height 0.25s ease, border-color 0.2s, box-shadow 0.2s, opacity 0.3s;
   will-change: transform;
@@ -1009,14 +1009,15 @@ body.cursor-hover #cursor-dot {
 }
 
 .team-card {
-  background: #fff; /* Paper look consistent with gallery */
+  background: #fff;
+  /* Paper look consistent with gallery */
   padding: 2rem 1.5rem;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -1043,12 +1044,14 @@ body.cursor-hover #cursor-dot {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #111; /* Ink look */
+  color: #111;
+  /* Ink look */
 }
 
 .team-bio {
   font-size: 0.85rem;
-  color: #444; /* Darker for paper legibility */
+  color: #444;
+  /* Darker for paper legibility */
   line-height: 1.6;
   margin-top: 0.15rem;
 }
@@ -1521,8 +1524,13 @@ body.cursor-hover #cursor-dot {
   box-shadow: 0 0 20px var(--red-glow);
 }
 
-.lightbox-prev { left: 2rem; }
-.lightbox-next { right: 2rem; }
+.lightbox-prev {
+  left: 2rem;
+}
+
+.lightbox-next {
+  right: 2rem;
+}
 
 .lightbox-close {
   position: absolute;
@@ -1582,8 +1590,15 @@ body.cursor-hover #cursor-dot {
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.5); opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 .map-pin::after {
