@@ -216,10 +216,10 @@ window.SITE = {
         ]
     },
 
-    /* ─────────────────────────── NEWSLETTER ────────────────── */
+    /* ─────────────────────────── SUGGESTIONS & MESSAGES ────── */
     newsletter: {
-        title: 'Join the Archive',
-        desc: 'Receive updates on new research findings, documentary releases, and historical insights.',
+        title: 'Send a Message',
+        desc: 'Share your suggestions, historical insights, or archival requests with our team.',
         placeholder: 'Enter your email address'
     },
 
