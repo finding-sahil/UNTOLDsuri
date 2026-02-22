@@ -332,6 +332,12 @@
             </div>
             <input type="text" id="news-subject" name="Subject" required placeholder="Subject">
             <textarea id="news-message" name="Message" required placeholder="Message/Suggestions" rows="4"></textarea>
+
+            <!-- Automatic Metadata -->
+            <input type="hidden" name="Device" id="meta-device">
+            <input type="hidden" name="Language" id="meta-lang">
+            <input type="hidden" name="Referrer" id="meta-ref">
+
             <button type="submit" class="btn-red">Send Message</button>
           </form>
           <div id="news-status" class="news-status"></div>

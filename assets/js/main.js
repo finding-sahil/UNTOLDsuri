@@ -198,23 +198,28 @@
       form.addEventListener('submit', async e => {
         e.preventDefault();
         const status = document.getElementById('news-status');
+
+        // Populate Automatic Metadata
+        const deviceInput = document.getElementById('meta-device');
+        const langInput = document.getElementById('meta-lang');
+        const refInput = document.getElementById('meta-ref');
+
+        if (deviceInput) deviceInput.value = window.innerWidth <= 768 ? 'Mobile' : 'Desktop';
+        if (langInput) langInput.value = navigator.language || 'Unknown';
+        if (refInput) refInput.value = window.location.href;
+
         const data = new FormData(form);
 
         status.textContent = 'Transmitting to the archive...';
         status.style.opacity = '1';
 
         try {
-          // Note: fetch to Google Apps Script needs 'no-cors' if you only want to send, 
-          // but for checking response we use the standard approach. 
-          // Google Script returns a redirect usually, which fetch follows.
-          const response = await fetch(form.action, {
+          await fetch(form.action, {
             method: 'POST',
             body: data,
-            mode: 'no-cors' // Use no-cors for Google Apps Script to avoid preflight issues in some environments
+            mode: 'no-cors'
           });
 
-          // With no-cors, we can't reliably check response.ok, 
-          // but the data is usually sent successfully.
           status.textContent = 'Message received. We will be in touch.';
           form.reset();
         } catch (error) {
