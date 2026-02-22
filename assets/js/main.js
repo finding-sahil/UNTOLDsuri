@@ -178,7 +178,7 @@
     if (!grid) return;
     grid.innerHTML = S.team.map(m => `
       <div class="team-card reveal">
-        <div class="team-avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="photo" width="64" height="64" loading="lazy" />` : ICONS.person}</div>
+        <div class="team-avatar">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" width="64" height="64" loading="lazy" />` : ICONS.person}</div>
         <div class="team-info">
           <strong class="team-name">${esc(m.name)}</strong>
           <span class="team-role">${esc(m.role)}</span>
