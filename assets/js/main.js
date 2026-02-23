@@ -584,8 +584,14 @@
     const loader = document.getElementById('loader');
     if (loader) {
       const startTime = Date.now();
-      const minDelay = 800; // Minimum time to show loader for cinematic effect
-      const maxTimeout = 3000; // Safety timeout
+
+      // Detection: Is this the home page? 
+      // Resilient check for both server and local filesystem paths
+      const path = window.location.pathname.toLowerCase();
+      const isHome = path.endsWith('/') || path.endsWith('/index.html') || path === "" || path.endsWith('\\index.html');
+
+      const minDelay = isHome ? 800 : 200; // Subpages are snappier
+      const maxTimeout = 3000;
 
       const hideLoader = () => {
         const currentTime = Date.now();
@@ -600,14 +606,19 @@
         }, remaining);
       };
 
-      // Remove bar on subpages immediately for faster feel
-      const isHome = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html') || window.location.pathname === "";
+      // STRICT bar removal for subpages
       if (!isHome) {
         const loaderBar = loader.querySelector('.loader-bar');
-        if (loaderBar) loaderBar.style.display = 'none';
+        if (loaderBar) loaderBar.style.visibility = 'hidden';
       }
 
-      window.addEventListener('load', hideLoader);
+      // Handle both "event not yet fired" and "already loaded" states
+      if (document.readyState === 'complete') {
+        hideLoader();
+      } else {
+        window.addEventListener('load', hideLoader, { once: true });
+      }
+
       // Safety fallback
       setTimeout(() => {
         if (loader.style.display !== 'none' && loader.style.opacity !== '0') {
