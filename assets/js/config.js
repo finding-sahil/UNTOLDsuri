@@ -24,14 +24,14 @@ window.SITE = {
 
     /* ─────────────────────────── NAV LINKS ─────────────────── */
     nav: [
-        { label: 'About', href: '#about' },
-        { label: 'Works', href: '#works' },
-        { label: 'Gallery', href: '#gallery' },
-        { label: 'Archive', href: '#research' },
-        { label: 'Map', href: '#map' },
-        { label: 'Team', href: '#team' },
-        { label: 'Join', href: '#newsletter' },
-        { label: 'Contact', href: '#contact' },
+        { label: 'Home', href: 'index.html' },
+        { label: 'About', href: 'about.html' },
+        { label: 'Works', href: 'works.html' },
+        { label: 'Gallery', href: 'gallery.html' },
+        { label: 'Archive', href: 'archive.html' },
+        { label: 'Achievements', href: 'achievements.html' },
+        { label: 'Team', href: 'team.html' },
+        { label: 'Contact', href: 'contact.html' },
     ],
 
     /* ─────────────────────────── SOCIAL LINKS ──────────────── */
@@ -143,6 +143,36 @@ window.SITE = {
         ],
     },
 
+    /* ─────────────────────────── ACHIEVEMENTS HERO ──────────── */
+    achievementsHero: {
+        preTitle: "Our Milestones",
+        titleMain: "Proof of",
+        titleHighlight: "Impact",
+        desc: "Numbers, awards, and recognition — what two years of relentless storytelling looks like."
+    },
+
+    /* ─────────────────────────── ACHIEVEMENTS ───────────────── */
+    achievements: [
+        {
+            year: '2025',
+            title: 'Best Regional Documentary',
+            event: 'Assam Film Awards',
+            desc: 'Recognized for "The River of Silence" – documenting the lost trade routes of the Barak Valley.'
+        },
+        {
+            year: '2024',
+            title: 'Digital Preservation Grant',
+            event: 'Regional Heritage Fund',
+            desc: 'Awarded for the development of the Barak Valley primary source digital archive.'
+        },
+        {
+            year: '2024',
+            title: '1M+ Collective Views',
+            event: 'Social Impact Milestone',
+            desc: 'Reached a cumulative audience of over one million across YouTube and Instagram.'
+        }
+    ],
+
     /* ─────────────────────────── TEAM ──────────────────────── */
     /*
      * photo: path to image file, e.g. 'assets/img/team-name.jpg'
@@ -152,27 +182,46 @@ window.SITE = {
         {
             name: '— Sushmita Sarkar —',
             role: 'Founder & Director',
-            bio: '',
+            bio: 'Coordinates primary research, field documentation, and editorial flow. Leads archival investigations across Barak Valley.',
             photo: 'assets/img/Sushmita.jpeg',
+            socials: { instagram: 'https://instagram.com/untoldsuri', facebook: 'https://facebook.com/untoldsuri', linkedin: '#' }
         },
         {
             name: '— Tushar Sarkar —',
             role: 'Founder & Director',
-            bio: '',
+            bio: 'Handles technical strategy, platform outreach, and the structural documentation of historical data.',
             photo: 'assets/img/Tushar.jpeg',
+            socials: { instagram: 'https://instagram.com/untoldsuri', facebook: 'https://facebook.com/untoldsuri', linkedin: '#' }
         },
         {
-            name: '— Update Name —',
+            name: '— Sahil —',
+            role: 'Editor & Developer',
+            bio: 'Oversees project operations and structural workflow. Instrumental in conceptualising the archive framework.',
+            photo: 'assets/img/Sahil.png',
+            socials: { instagram: 'https://instagram.com/finding.sahil', facebook: '#', linkedin: '#' }
+        },
+        {
+            name: '— Subhajyoti —',
             role: 'Narrator & Writer',
             bio: 'Crafts the documentary narration and editorial content. Ensures accuracy and clarity of voice.',
             photo: '',
+            socials: { instagram: 'https://www.instagram.com/subhajyot.i/', facebook: '#', linkedin: '#' }
         },
         {
-            name: '— Update Name —',
-            role: 'Visual Editor',
-            bio: 'Handles post-production, visual composition, and the cinematic presentation of research material.',
+            name: '— Ananya —',
+            role: 'Narrator & Writer',
+            bio: 'Crafts the documentary narration and editorial content. Ensures accuracy and clarity of voice.',
             photo: '',
+            socials: { instagram: 'https://www.instagram.com/subhajyot.i/', facebook: '#', linkedin: '#' }
         },
+        /*{
+            name: '— Visit the Archive —',
+            role: 'Become a Contributor',
+            bio: 'We are looking for field researchers and writers to help us document more untold stories of Barak Valley.',
+            photo: '',
+            socials: { instagram: 'https://instagram.com/untoldsuri', facebook: '#', linkedin: '#' }
+        }, */
+    
     ],
 
     /* ─────────────────────────── ARCHIVAL GALLERY ─────────── */
@@ -231,5 +280,25 @@ window.SITE = {
             'We are also open to marketing partnerships, sponsorships, and brand collaborations that align with our values of honest storytelling and regional heritage. If you are interested in working with us, we would love to hear from you.',
         ],
     },
+
+    /* ─────────────────────────── FAQ SECTION ───────────────── */
+    faq: [
+        {
+            q: "What is the primary focus of UNTOLDsuri?",
+            a: "We focus on documenting the undocumented. Our primary mission is to record the lost or forgotten histories of the Barak Valley through meticulous research and cinematic storytelling."
+        },
+        {
+            q: "How can I contribute to the archive?",
+            a: "If you have archival photographs, primary documents, or oral histories related to Barak Valley, please reach out via our contact page. We credit all contributors."
+        },
+        {
+            q: "Is the research verified?",
+            a: "Yes. Every piece of content is built on cross-referenced sources, archival records, and expert consultation. We prioritize historical accuracy above all else."
+        },
+        {
+            q: "Can I use your footage for educational purposes?",
+            a: "Please contact us for licensing and usage rights. We generally support educational use if proper attribution is provided."
+        }
+    ],
 
 };

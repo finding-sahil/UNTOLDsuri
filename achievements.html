@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="UNTOLDsuri is an independent research archive documenting the lost history and cultural heritage of Barak Valley. This section is currently under development." />
+  <title>Achievements | UNTOLDsuri Archive</title>
+  <link rel="canonical" href="https://untold-suri.vercel.app/achievements.html" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Achievements - Under Development",
+      "url": "https://untold-suri.vercel.app/achievements.html",
+      "description": "This section of the UNTOLDsuri archive is currently being documented and will be live soon."
+    }
+  </script>
+
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="Logo/logo.jpg" as="image" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css?v=1.0.3" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="Logo/logo.jpg" sizes="192x192" />
+
+  <style>
+    .dev-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dev-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem;
+    }
+
+    .dev-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .dev-title span {
+      color: var(--red);
+    }
+
+    .dev-status {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: var(--red-dim);
+      border: 1px solid var(--red-glow);
+      color: var(--red);
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+      border-radius: 99px;
+    }
+
+    .dev-desc {
+      font-size: 1.2rem;
+      color: var(--g6);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-logo">UNTOLD<span>suri</span></div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Noise Layers -->
+  <div class="film-grain"></div>
+  <div class="scanlines"></div>
+
+  <!-- Cursor tracer -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <nav id="site-nav" class="site-nav" aria-label="Primary navigation"></nav>
+
+  <!-- Hero Section -->
+  <header class="dev-hero">
+    <div class="hero-bubbles" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="concentric-bg"></div>
+
+    <div class="dev-content container reveal active">
+      <div class="dev-status">Classified Project</div>
+      <h1 class="dev-title">Coming <span>Soon</span></h1>
+      <p class="dev-desc">
+        Our achievements and milestones are being digitized and verified.
+        The UNTOLDsuri documentary archive is expanding to include primary research records and archival recognition.
+      </p>
+      <div class="hero-actions" style="justify-content: center;">
+        <a href="index.html" class="btn btn-primary">Return to Archive</a>
+        <a href="contact.html" class="btn btn-outline">Notify Me</a>
+      </div>
+    </div>
+  </header>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <p id="footer-brand" class="footer-brand"></p>
+          <p id="footer-tagline" class="footer-tagline"></p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-label">Quick Links</h4>
+          <ul id="footer-nav" class="footer-nav-list"></ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-label">Connect</h4>
+          <div id="footer-socials"></div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <blockquote id="footer-quote" class="footer-quote"></blockquote>
+        <div class="footer-meta">
+          <p id="footer-copy" class="footer-copy"></p>
+          <p id="footer-dev" class="footer-dev"></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js?v=1.0.3" defer></script>
+
+</body>
+
+</html>

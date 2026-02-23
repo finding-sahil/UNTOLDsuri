@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="UNTOLDsuri is an independent research archive documenting the lost history, cinematic documentary stories, and cultural heritage of Barak Valley (Cachar, Silchar, Karimganj, Hailakandi). Explore our historical films and primary research." />
-  <title>UNTOLDsuri | Barak Valley History, Documentary & Research Archive</title>
-  <link rel="canonical" href="https://untold-suri.vercel.app/" />
+  <title>Featured Works & Films | UNTOLDsuri Archive</title>
+  <link rel="canonical" href="https://untold-suri.vercel.app/works.html" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -45,7 +45,7 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://untold-suri.vercel.app/" />
+  <meta property="og:url" content="https://untold-suri.vercel.app/works.html" />
   <meta property="og:title" content="UNTOLDsuri – Barak Valley's Forgotten History" />
   <meta property="og:description"
     content="Documenting the lost histories of Barak Valley through primary research and cinematic documentary storytelling." />
@@ -53,7 +53,7 @@
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://untold-suri.vercel.app/" />
+  <meta property="twitter:url" content="https://untold-suri.vercel.app/works.html" />
   <meta property="twitter:title" content="UNTOLDsuri – Barak Valley's Forgotten History" />
   <meta property="twitter:description"
     content="Documenting the lost histories of Barak Valley through primary research and cinematic documentary storytelling." />
@@ -175,19 +175,11 @@
       position: relative;
       overflow: hidden;
     }
-
+  
     @keyframes pulse-fade {
-
-      0%,
-      100% {
-        opacity: 0.4;
-      }
-
-      50% {
-        opacity: 1;
-      }
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
     }
-
     .loader-logo {
       animation: pulse-fade 1.8s infinite ease-in-out;
     }
@@ -210,7 +202,7 @@
     <div class="loader-content">
       <div class="loader-logo">UNTOLD<span>suri</span></div>
       <div class="loader-bar"></div>
-
+      
     </div>
   </div>
 
@@ -234,64 +226,24 @@
   <nav id="site-nav" class="site-nav" aria-label="Primary navigation"></nav>
 
   <!-- ════════════════════════════════════ HERO ═══ -->
-  <header class="hero" id="top">
-    <div class="hero-bubbles" aria-hidden="true">
-      <span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-    </div>
-    <div id="hero-inner" class="hero-inner">
-      <h1 class="hero-title">UNTOLDsuri: Barak Valley History & Research Archive</h1>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- ══════════════════════════════════ ABOUT ═══ -->
-    <section class="section" id="about">
-      <div class="container">
-        <span class="section-label">About the Project</span>
-        <h2 class="section-title">What is UNTOLDsuri?</h2>
-        <div id="about-body" class="about-body"></div>
-        <div style="margin-top: 2rem;"><a href="about.html" class="btn-red" style="display: inline-block;">Read Full
-            Mission</a></div>
+  
+<main style="padding-top: 4rem;">
+    <header class="page-header reveal reveal-delay-1 active">
+      <h1 class="page-header-title reveal reveal-delay-2 active">Featured Works</h1>
+      <div class="breadcrumb reveal reveal-delay-3 active">
+        <a href="index.html">Home</a> <span class="breadcrumb-slash">/</span> <span>Featured Works</span>
       </div>
-    </section>
+    </header>
 
-    <!-- ══════════════════════════════════ WORKS ═══ -->
-    <section class="section" id="works">
+<section class="section" id="works">
       <div class="container">
         <span class="section-label">Featured Works</span>
         <h2 class="section-title">Documentary &amp; Reels</h2>
         <p class="section-intro">A selection of our published films and short-form research content.</p>
         <div id="works-grid" class="works-grid"></div>
-        <div style="text-align: center; margin-top: 3rem;"><a href="works.html" class="btn-red"
-            style="display: inline-block;">View All Works</a></div>
       </div>
     </section>
-
-    <!-- ════════════════════════════════════ TEAM ═══ -->
-    <section class="section section-alt" id="team">
-      <div class="bubble-bg" aria-hidden="true"></div>
-      <div class="container">
-        <span class="section-label">The Team</span>
-        <h2 class="section-title">Who We Are</h2>
-        <p class="section-intro">A small group of researchers and storytellers working out of Barak Valley.</p>
-        <div id="team-grid" class="team-grid" data-limit="3"></div>
-        <div style="text-align: center; margin-top: 3rem;"><a href="team.html" class="btn-red"
-            style="display: inline-block;">View All Members</a></div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════ FAQ ═══ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <span class="section-label">Common Questions</span>
-        <h2 class="section-title">Frequently Asked</h2>
-        <div id="faq-list" class="faq-list"></div>
-      </div>
-    </section>
-
-  </main>
+</main>
 
   <!-- Fullscreen Lightbox -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery viewer">
